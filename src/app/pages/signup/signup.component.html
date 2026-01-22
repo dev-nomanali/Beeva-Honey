@@ -1,0 +1,124 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">Sign Up</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-white" routerLink="/">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Sign Up</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Signup Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="bg-white shadow-sm rounded p-5">
+          <div class="section-title text-center mb-4">
+            <p class="fs-5 fw-medium fst-italic text-primary">Join Us</p>
+            <h1 class="display-6 mb-0">Create Your Account</h1>
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-user floating-icon"></i>
+                  <input type="text" class="form-control" id="username" formControlName="username"
+                    placeholder="Enter your username" />
+                  <label for="username">Your Name</label>
+                  <small class="error"
+                    *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid">
+                    <span *ngIf="username?.errors?.['required']">* Username is required.</span>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-envelope floating-icon"></i>
+                  <input type="email" class="form-control" id="email" formControlName="email"
+                    placeholder="Enter your email" />
+                  <label for="email">Your Email</label>
+                  <small class="error" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+                    <span *ngIf="email?.errors?.['required']">* Email is required.</span>
+                    <span *ngIf="email?.errors?.['email']">Invalid email format.</span>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-phone floating-icon"></i>
+                  <input type="tel" class="form-control" id="phone" formControlName="phone"
+                    placeholder="Enter your phone number" />
+                  <label for="phone">Your Phone</label>
+                  <small class="error" *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.invalid">
+                    <span *ngIf="phone?.errors?.['required']">* Phone is required.</span>
+                    <span *ngIf="phone?.errors?.['pattern']">Invalid phone format.</span>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-map-marker-alt floating-icon"></i>
+                  <textarea class="form-control" id="address" formControlName="address"
+                    placeholder="Enter your address" rows="1"></textarea>
+                  <label for="address">Your Address</label>
+                  <small class="error" *ngIf="signupForm.get('address')?.touched && signupForm.get('address')?.invalid">
+                    <span *ngIf="address?.errors?.['required']">* Address is required.</span>
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-lock floating-icon"></i>
+                  <input class="form-control" [type]="passwordVisible ? 'text' : 'password' " id="password" formControlName="password"
+                    placeholder="Enter your password" />
+                  <span class="eye" (click)="passVisibile()">
+                    <i [ngClass]="passwordVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+                  </span>
+
+                  <small class="error"
+                    *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+                    <span *ngIf="password?.errors?.['required']">* Password is required.</span>
+                    <span *ngIf="password?.errors?.['minlength']">Minimum 6 characters
+                      required.</span>
+                  </small>
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating position-relative">
+                  <i class="fa fa-lock floating-icon"></i>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                  <label for="confirmPassword">Confirm Password</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    I agree to the <a href="#" class="text-primary">Terms & Conditions</a> and <a href="#"
+                      class="text-primary">Privacy Policy</a>
+                  </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary rounded-pill w-100 py-3" type="submit">
+                  <i class="fa fa-user-plus me-2"></i>Create Account
+                </button>
+              </div>
+              <div class="col-12 text-center">
+                <p class="mb-0">Already have an account? <a routerLink="/login" class="text-primary fw-bold">Login</a>
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Signup End -->

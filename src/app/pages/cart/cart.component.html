@@ -1,0 +1,241 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">Your Cart</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-white" routerLink="/">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Cart</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <div *ngIf="cartItems.length === 0" class="text-center">
+      <h4 class="mb-3">Your cart is empty</h4>
+      <a routerLink="/store" class="btn btn-primary rounded-pill py-2 px-4">Go to Store</a>
+    </div>
+
+    <div *ngIf="cartItems.length > 0" class="row g-4">
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-body p-0">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item" *ngFor="let item of cartItems">
+                <div class="d-flex align-items-center gap-3">
+                  <img [src]="item.product.image" [alt]="item.product.name" width="80" height="80"
+                    style="object-fit: cover;" />
+                  <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <div>
+                        <h5 class="mb-1">{{ item.product.name }}</h5>
+                        <div class="text-muted small">Price: ₹ {{ item.product.discount_price }}</div>
+                      </div>
+                      <button class="btn btn-sm btn-outline-danger" (click)="deleteProduct(item.productId)">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
+
+                    <div class="d-flex align-items-center mt-2">
+                      <button class="btn btn-outline-secondary btn-sm" (click)="decrement(item)"
+                        [disabled]="item.quantity <= 1">-</button>
+                      <input class="form-control form-control-sm mx-2 text-center" [value]="item.quantity"
+                        style="width: 60px;" readonly />
+                      <button class="btn btn-outline-secondary btn-sm" (click)="increment(item)">+</button>
+                      <div class="ms-auto fw-semibold">Item Total: ₹ {{ item.itemTotal }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Order Summary</h5>
+            <div class="d-flex justify-content-between">
+              <span>Total Items</span>
+              <span>{{ summary?.totalItems }}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>Total Quantity</span>
+              <span>{{ summary?.totalQuantity }}</span>
+            </div>
+            <hr />
+            <div class="d-flex flex-column mb-3">
+              <label class="fw-bold mb-2">Payment Type</label>
+              <!-- <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="paymentType" id="cod" value="COD"
+                  [(ngModel)]="paymentType" />
+                <label class="form-check-label" for="cod">
+                  <i class="fa fa-money-bill-wave text-primary me-2"></i> Cash on Delivery
+                </label>
+              </div> -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentType" id="razorpay" value="Razorpay"
+                  [(ngModel)]="paymentType" />
+                <label class="form-check-label" for="razorpay">
+                  <i class="fa fa-credit-card text-primary me-2"></i> Razorpay
+                </label>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column mb-3">
+              <label class="fw-bold mb-2">Apply Coupon</label>
+              <div class="mb-2">
+                <input class="form-control" type="text" name="couponCode" id="couponCode" value="couponCode"
+                  [(ngModel)]="couponCode" />
+              </div>
+              <button (click)="applyCoupon()" class="btn btn-primary apply-btn">Apply</button>
+            </div>
+
+            <hr />
+            <div class="d-flex flex-column fw-bold gap-2">
+
+              <div class="d-flex justify-content-between">
+                <span>Sub-total</span>
+                <span>₹ {{ summary?.subtotal }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <span>Shipping Charges</span>
+                <span>₹ {{ summary?.totalShippingCharges }}</span>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between">
+                <span>Total Amount</span>
+                <span>₹ {{ summary?.grossAmount }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <span>Discount</span>
+                <span> - ₹ {{ summary?.discount }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <span>Final Amount to be Paid</span>
+                <span>₹ {{ summary?.totalAmount }}</span>
+              </div>
+
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+              <button class="btn btn-outline-danger flex-grow-1" (click)="clearCart()">Clear Cart</button>
+              <button class="btn btn-primary flex-grow-1" data-bs-toggle="modal"
+                data-bs-target="#addressModal">Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Address Modal -->
+<div class="modal fade" id="addressModal" tabindex="-1" aria-labelledby="addressModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="addressModalLabel">Enter Delivery Address</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form [formGroup]="addressForm">
+        <div class="modal-body">
+
+          <!-- Name  -->
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <span *ngIf="name?.touched && name?.errors?.['required']" class="error">* Name is required</span>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            <span *ngIf="email?.touched && email?.errors?.['required']" class="error">* Email is required</span>
+          </div>
+
+          <!-- Address Line 1 -->
+          <div class="mb-3">
+            <label class="form-label">Address Line 1</label>
+            <input type="text" class="form-control" formControlName="addressLine1">
+            <span class="error" *ngIf="addressLine1?.touched && addressLine1?.errors?.['required'] ">* Address Line 1 is
+              Required</span>
+          </div>
+
+          <!-- Address Line 2 -->
+          <div class="mb-3">
+            <label class="form-label">Address Line 2</label>
+            <input type="text" class="form-control" formControlName="addressLine2">
+            <span class="error" *ngIf="addressLine2?.touched && addressLine2?.errors?.['required'] ">* Address Line 2 is
+              Required</span>
+          </div>
+
+          <!-- City -->
+          <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" formControlName="city">
+            <span class="error" *ngIf="city?.touched && city?.errors?.['required'] ">* City is Required</span>
+          </div>
+
+          <!-- State -->
+          <div class="mb-3">
+            <label class="form-label">State</label>
+            <input type="text" class="form-control" formControlName="state">
+            <span class="error" *ngIf="state?.touched && state?.errors?.['required'] ">* State is Required</span>
+          </div>
+
+          <!-- Zip Code -->
+          <div class="mb-3">
+            <label class="form-label">Zip Code</label>
+            <input type="text" class="form-control" formControlName="zipCode">
+            <span class="error" *ngIf="zipCode?.touched && zipCode?.errors?.['required'] ">* Zip Code is Required</span>
+          </div>
+
+          <!-- Alternate Phone -->
+          <div class="mb-3">
+            <label class="form-label">Alternate Phone Number</label>
+            <input type="text" class="form-control" formControlName="altPhone">
+            <span class="error" *ngIf="altPhone?.touched && altPhone?.errors?.['required'] ">* Alternate Phone Number is
+              Required</span>
+            <span class="error" *ngIf="altPhone?.touched && altPhone?.errors?.['pattern']">
+              * Phone number must be 10 digits only
+            </span>
+          </div>
+
+          <!-- Terms -->
+
+          <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="terms" formControlName="terms">
+            <label class="form-check-label" for="terms">
+              I agree to all terms and conditions
+            </label>
+          </div>
+
+          <!-- Error message -->
+          <!-- Error message -->
+          <span class="text-danger d-block error" *ngIf="terms?.touched && terms?.hasError('required')">
+            * You must agree to the terms and conditions
+          </span>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" [disabled]="addressForm.invalid" class="btn place-order-btn" (click)="placeOrder()"
+            data-bs-dismiss="modal">
+            Place Order
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

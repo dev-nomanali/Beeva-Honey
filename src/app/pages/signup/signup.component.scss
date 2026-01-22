@@ -1,0 +1,34 @@
+/* Signup component styles */
+
+.eye{
+  position: absolute !important;
+  right: 15px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Keep icons stable in form-floating fields */
+.form-floating .floating-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.form-floating > .form-control {
+  padding-left: 2.25rem;
+}
+
+/* Ensure label text doesn't overlap the icon when floating */
+.form-floating > label {
+  left: 2.25rem;
+}

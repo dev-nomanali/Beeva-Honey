@@ -1,0 +1,60 @@
+/* Page-specific overrides can go here if needed */
+
+/* Fix testimonial background - use inline style approach via component */
+:host ::ng-deep .testimonial {
+  background: linear-gradient(rgba(136, 180, 78, .85), rgba(136, 180, 78, .85)), url('/assets/img/testimonial-bg.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+/* Action Row */
+.action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* Quantity Box */
+.quantity-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.qty-input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+
+.tagline {
+  color: white !important;
+}
+
+.price-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

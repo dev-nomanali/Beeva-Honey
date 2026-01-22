@@ -1,0 +1,68 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">Online Store</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-white" routerLink="/">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Store</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Store Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+      <input class="search-input"  [(ngModel)]="searchTerm"  (input)="searchProduct()" type="text" name="" id="">
+      <i class="fa fa-search search-icon" ></i>
+
+      <p class="fs-5 fw-medium fst-italic text-primary">Online Store</p>
+      <h1 class="display-6">Want to stay healthy? Choose tea taste</h1>
+    </div>
+    <div class="row g-4">
+       <!-- <h2  *ngIf="!products && products.length < 1" >No Record Found</h2> -->
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let product of products">
+        <div class="store-item position-relative text-center">
+          <img class="img-fluid" [src]="product.image" [alt]="product.name">
+          <div class="p-4">
+            <div class="text-center mb-3">
+              <small class="fa fa-star text-primary"></small>
+              <small class="fa fa-star text-primary"></small>
+              <small class="fa fa-star text-primary"></small>
+              <small class="fa fa-star text-primary"></small>
+              <small class="fa fa-star text-primary"></small>
+            </div>
+            <h4 class="mb-3">{{ product.name }}</h4>
+            <h4 class="mb-3">{{ product.weight }}</h4>
+            <h4 class="mb-3">{{ product.Availability }}</h4>
+            <p>{{product.description}}</p>
+            <div class="price-div" >
+              <h4 class="text-primary text-decoration-line-through">₹ {{product.price}}</h4>
+              <h4 class="text-primary">₹ {{product.discount_price}} </h4>
+            </div>
+            
+          </div>
+          <div class="store-overlay">
+            <!-- <a href="" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Detail <i class="fa fa-arrow-right ms-2"></i></a> -->
+            <button class="btn btn-dark rounded-pill py-2 px-4 m-2" (click)="addToCart(product.id,product.count)">Add to
+              Cart <i class="fa fa-cart-plus ms-2"></i></button>
+            <div class="action-row">
+              <div class="quantity-box">
+                <button class="qty-btn" (click)="quantDel(product)" [disabled]="product.count <= 1">-</button>
+                <input type="text" [(ngModel)]="product.count" class="qty-input" readonly />
+                <button class="qty-btn" (click)="quantAdd(product)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+        <a href="" class="btn btn-primary rounded-pill py-3 px-5">View More Products</a>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- Store End -->

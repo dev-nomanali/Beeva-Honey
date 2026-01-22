@@ -1,0 +1,41 @@
+.list-group-item {
+  padding: 1rem;
+}
+
+
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  cursor: pointer;
+  accent-color: #0d6efd;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+  transform: scale(1.1);
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.form-check-label i {
+  font-size: 1rem;
+}
+
+.place-order-btn{
+  background-color: #88b44e;
+  color: white;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.apply-btn{
+  height: 36px;
+  width: 200px;
+}

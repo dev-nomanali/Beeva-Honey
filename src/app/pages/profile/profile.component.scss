@@ -1,0 +1,122 @@
+.page-header {
+  background-size: cover;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-header {
+  border-bottom: none;
+}
+
+.form-control {
+  border: 1px solid #dee2e6;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border-right: none;
+}
+
+.input-group .form-control {
+  border-left: none;
+}
+
+.input-group:focus-within .input-group-text {
+  border-color: #0d6efd;
+}
+
+.input-group:focus-within .form-control {
+  border-color: #0d6efd;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-toggle-btn {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  margin-right: 2px;
+}
+
+.edit-mode-inactive {
+  background-color: #88b44e;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.edit-mode-inactive:hover {
+  background-color: #88b44e;
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.edit-mode-active {
+  background-color: #87c930;
+  margin-right: 5px;
+  color: #ffffff;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.edit-mode-active:hover {
+  background-color: #88b44e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.logout-btn {
+  background-color: #88b44e;
+  color: #ffffff;
+  cursor: pointer;
+  width: 140px;
+}
+
+.logout-btn:hover {
+  background-color: #88b44e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.save-profile-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.edit-form-footer {
+  display: flex;
+  justify-content: space-between;
+}

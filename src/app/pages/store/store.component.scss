@@ -1,0 +1,72 @@
+/* Action Row */
+.action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* Quantity Box */
+.quantity-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.qty-input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.search-input {
+  border-radius: 16px;
+  width: 70%;
+  margin-bottom: 20px;
+  height: 40px !important;
+  border: 2px solid #88b44e;
+  outline: none;
+  color: #333;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.search-icon{
+  position: absolute;
+  top: 15px;
+  right: 90px;
+}
+
+.search-input:focus,
+.search-input:active,
+.search-input:hover {
+  border: 2px solid #88b44e !important;
+  box-shadow: 0 0 5px #88b44e55 !important;
+}
+
+.price-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

@@ -1,0 +1,114 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">My Profile</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-white" routerLink="/">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">Profile</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Profile Information Card -->
+      <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm wow fadeInUp" data-wow-delay="0.1s">
+          <div class="card-header bg-primary">
+            <h4 class="mb-0 text-white"><i class="fa fa-user me-2"></i>Profile Information</h4>
+          </div>
+          <div class="card-body p-4">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+              <div class="row g-4">
+                <!-- Username -->
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold text-primary">Username <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" formControlName="username" placeholder="Enter username"
+                      [class.is-invalid]="username?.invalid && username?.touched" />
+                  </div>
+                  <div *ngIf="username?.invalid && username?.touched" class="text-danger small mt-1">
+                    <span *ngIf="username?.errors?.['required']">Username is required</span>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold text-primary">Email Address <span
+                      class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Enter email address"
+                      [class.is-invalid]="email?.invalid && email?.touched" />
+                  </div>
+                  <div *ngIf="email?.invalid && email?.touched" class="text-danger small mt-1">
+                    <span *ngIf="email?.errors?.['required']">Email is required</span>
+                    <span *ngIf="email?.errors?.['email']">Please enter a valid email address</span>
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold text-primary">Phone Number <span
+                      class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                    <input type="tel" class="form-control" formControlName="phone" placeholder="Enter phone number"
+                      [class.is-invalid]="phone?.invalid && phone?.touched" />
+                  </div>
+                  <div *ngIf="phone?.invalid && phone?.touched" class="text-danger small mt-1">
+                    <span *ngIf="phone?.errors?.['required']">Phone number is required</span>
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold text-primary">Address <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-map-marker-alt"></i></span>
+                    <textarea class="form-control" formControlName="address" rows="2" placeholder="Enter address"
+                      [class.is-invalid]="address?.invalid && address?.touched"></textarea>
+                  </div>
+                  <div *ngIf="address?.invalid && address?.touched" class="text-danger small mt-1">
+                    <span *ngIf="address?.errors?.['required']">Address is required</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="row mt-4">
+                <div class="col-12">
+                  <div class="d-flex gap-2 edit-form-footer">
+                    <div>
+                      <button type="button" class="btn logout-btn"  *ngIf="authService.isLoggedIn" (click)="logout()" >
+                        Logout
+                      </button>
+                    </div>
+                    <div>
+                      <button type="button" class="btn edit-toggle-btn" [class.edit-mode-active]="editMode"
+                        [class.edit-mode-inactive]="!editMode" (click)="toggleEditMode()">
+                        <i [class]="editMode ? 'fa fa-times me-2' : 'fa fa-edit me-2'"></i>
+                        {{ editMode ? 'Cancel' : 'Edit' }}
+                      </button>
+                      <button *ngIf="editMode" type="submit" class="btn btn-success save-profile-btn"
+                        [disabled]="profileForm.invalid || !editMode">
+                        <span *ngIf="editMode" class="me-2"></span>
+                        <i *ngIf="!editMode" class="fa fa-save me-2"></i>
+                        Save Profile
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

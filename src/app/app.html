@@ -1,0 +1,118 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+<router-outlet></router-outlet>
+<!-- Navbar Start -->
+<div class="container-fluid bg-white sticky-top">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
+      <a routerLink="/" class="navbar-brand ">
+        <img class="img-fluid" src="assets/img/newlogo.png" alt="Logo">
+      </a>
+      <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto">
+          <a routerLink="/" routerLinkActive="active" class="nav-item nav-link">Home</a>
+          <a routerLink="/store" routerLinkActive="active" class="nav-item nav-link">Products</a>
+          <a routerLink="/terms" routerLinkActive="active" class="nav-item nav-link">Terms</a>
+          <a routerLink="/contact" routerLinkActive="active" class="nav-item nav-link">Contact</a>
+        </div>
+        <div class="cred border-start p-4 d-none d-lg-block d-flex align-items-center gap-3">
+          <div class="cart-btn">
+            <a routerLink="/cart" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+              <i class="fa fa-shopping-cart me-1"></i>Cart
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- Navbar End -->
+
+<router-outlet></router-outlet>
+
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="cancel-modal">
+    <div class="cancel-header">
+      <h2>Cancel Order</h2>
+      <span class="cancel-close" (click)="closeModal()">&#10005;</span>
+    </div>
+    <div class="cancel-msg">
+      <p>To cancel your order, contact us with your</p>
+      <h3>Order ID</h3>
+    </div>
+    <div class="contact-box">
+      <p>
+        <i class="bi bi-telephone-fill"></i>
+        <b>Phone:</b> &nbsp; +91 75059 78684
+      </p>
+      <p>
+        <i class="bi bi-envelope-fill"></i>
+        <b>Email:</b> &nbsp; {{"orders@beebloom.in"}}
+      </p>
+    </div>
+    <div class="cancel-footer">
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <h4 class="text-primary mb-4">Our Office</h4>
+        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Bareilly Uttar Pradesh, India</p>
+        <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>{{num}}</p>
+        <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>{{email}}</p>
+        <div class="d-flex pt-3">
+          <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+          <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4 class="text-primary mb-4">Quick Links</h4>
+        <a class="btn btn-link" routerLink="/contact">Contact Us</a>
+        <a class="btn btn-link" (click)="openModel()">Cancel Order</a>
+        <a class="btn btn-link" href="">Terms & Condition</a>
+        <a class="btn btn-link" href="">Support</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4 class="text-primary mb-4">Business Hours</h4>
+        <p class="mb-1">Monday - Friday</p>
+        <h6 class="text-light">09:00 am - 07:00 pm</h6>
+        <p class="mb-1">Saturday</p>
+        <h6 class="text-light">09:00 am - 12:00 pm</h6>
+        <p class="mb-1">Sunday</p>
+        <h6 class="text-light">Closed</h6>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4 class="text-primary mb-4">Newsletter</h4>
+        <p>Experience the pure taste of Raw Organic and Unprocessed Honey .</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid copyright py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        &copy; <a class="fw-medium" href="#">Apples of Kinnaur</a>, All Right Reserved.
+      </div>
+      <div class="col-md-6 text-center text-md-end">Designed By <a class="fw-medium"
+          href="https://stacknize.com">Noman Ali</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer End -->

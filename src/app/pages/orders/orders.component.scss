@@ -1,0 +1,144 @@
+.order-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+.card-header {
+  border-bottom: 2px solid #f0f0f0;
+  padding: 1rem 1.5rem;
+}
+
+.order-header-info {
+  h5 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  small {
+    font-size: 0.875rem;
+  }
+}
+
+.order-status {
+  .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+.order-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.order-items {
+  .border {
+    border-color: #e9ecef !important;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+.order-info,
+.order-summary {
+  h6 {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+}
+
+.delivery-address {
+  border-left: 3px solid #0d6efd;
+  background-color: #f8f9fa !important;
+
+  h6 {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #6c757d;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+}
+
+.empty-orders {
+  padding: 3rem 1rem;
+
+  i {
+    opacity: 0.5;
+  }
+
+  h4 {
+    color: #495057;
+    font-weight: 600;
+  }
+
+  p {
+    color: #6c757d;
+    margin-bottom: 2rem;
+  }
+}
+
+.page-header {
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .order-card {
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 1rem;
+    }
+
+    .order-status {
+      align-self: flex-start;
+    }
+  }
+
+  .order-item-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .order-summary {
+    text-align: left !important;
+    margin-top: 1rem;
+
+    .d-flex {
+      justify-content: space-between !important;
+    }
+  }
+}
+
+button:disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important; 
+}
